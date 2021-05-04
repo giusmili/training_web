@@ -36,8 +36,132 @@ button{
     --middle-color: #375F1B;
     --color-text: #fff;
 }
-header h1, footer p{
+header h1, footer p, section h3{
     font-weight: 300;
     text-align: center;
     line-height: 6.5rem;
 }
+
+.article_of{
+    position: relative;
+   height: 0; /* les articles cachés */
+   opacity: 0;
+   z-index: -1;
+   overflow: hidden;
+   transition: all .6s ease-in-out;
+   
+
+}
+.article_on{
+    opacity: 1;
+    z-index: 1;
+    height: initial;
+}
+
+
+figure figcaption h2::before{
+    content: url("../asset/edit-2.svg");
+    vertical-align: middle;
+    margin-right: .5rem;
+}
+main figure{
+    display: grid;
+    max-width: 80rem;
+    margin: 1rem auto;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    align-items: top;
+    border: solid .1rem #ccc;
+    padding: 1rem;
+    background-color: #fafafa;
+}
+main figure img{
+    order: 1;
+    display: block;
+    width: 100%;
+    clip-path: circle(100%);
+}
+main figure figcaption h2,main figure figcaption p{
+    padding: 1rem 1rem 0 1rem;
+
+}
+main figure figcaption time{
+    padding: 1rem;
+    display: block;
+    color: rgb(92, 89, 89);
+    font-style: italic;
+    font-size: small;
+}
+main figure figcaption p{
+    line-height: 2.6rem;
+    padding-top: 0;
+}
+/* suite des article */
+main figure:nth-child(2n + 2) figcaption{
+    order: 1;
+}
+main .btn-add{
+    font-size: initial;
+    padding: 1rem;
+    display: block;
+    width: 20rem;
+    text-align: center;
+    border: solid .1rem #222;
+    margin: 0 auto;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+main .btn-add::before{
+    content:'+ ADD MORE';
+}
+main .btn-remove::before{
+    content:'- LESS ARTICLE';
+}
+details{
+    max-width: 80rem;
+    margin:1rem auto;
+    border: solid .1rem #222;
+    padding: 1rem;
+}
+details summary{
+    list-style-type: none;
+    text-align: center;
+    padding: 1rem;
+    cursor: pointer;
+}
+details summary::-webkit-details-marker{
+    display: none;
+}
+details summary::before{
+    display: inline-block;
+    content: "\203A";
+    margin-right: .5rem;
+    transform: rotate(0deg);
+    vertical-align: top;
+}
+details[open] summary::before{
+    content: "\203A";
+    transform: rotate(90deg);
+}
+details ul{
+    line-height: 3.5rem;
+}
+/* responsive */
+@media screen and (max-width: 70rem){
+    main figure{
+    grid-template-columns: repeat(1, 1fr);
+    }
+    header h1{
+        font-size: 2rem;
+    }
+}
+@media screen and (orientation:landscape){
+    main figure{
+        grid-template-columns: repeat(2, 1fr);
+        }
+        header h1{
+            font-size: xx-large;
+        }
+
+}
+    
